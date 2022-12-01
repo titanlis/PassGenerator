@@ -47,9 +47,15 @@
                <Label text=" " />
                <TextField fx:id="pass_field" alignment="CENTER" editable="false" prefHeight="200.0" prefWidth="200.0">
                   <font>
-                     <Font size="18.0" />
+                     <Font name="System Bold" size="18.0" />
                   </font>
                </TextField>
+               <Label text=" " />
+               <Label text="copied to clipboard">
+                  <font>
+                     <Font name="System Italic" size="11.0" />
+                  </font>
+               </Label>
             
                 <Label fx:id="passwordText" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="529.0" textAlignment="CENTER">
                   <font>

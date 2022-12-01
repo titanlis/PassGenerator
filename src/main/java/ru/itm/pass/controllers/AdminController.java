@@ -7,6 +7,10 @@ import javafx.scene.control.TextField;
 import ru.itm.pass.services.AdminService;
 import ru.itm.pass.services.AdminServiceImpl;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
 public class AdminController {
 
     @FXML
@@ -32,7 +36,8 @@ public class AdminController {
 
 
     private AdminService adminService;
-
+    private Clipboard clipboard;
+    private String passString;
 
 
     @FXML
@@ -49,12 +54,15 @@ public class AdminController {
             len_field.setText(String.valueOf(adminService.getLen()));
         }
         passwordText.setText(" ");
-        pass_field.setText(adminService.generatePassword());
-    }
 
+        passString = adminService.generatePassword();
+        pass_field.setText(passString);
+        clipboard.setContents(new StringSelection(passString), null);
+    }
 
     @FXML
     public void initialize() {
+        clipboard = getSystemClipboard();
         adminService= new AdminServiceImpl();
         lA.setSelected(adminService.getIsLowAlpha());
         hA.setSelected(adminService.getIsHighAlpha());
@@ -62,7 +70,11 @@ public class AdminController {
         punct.setSelected(adminService.getIsPunctuationMarks());
         len_field.setText(String.valueOf(adminService.getLen()));
         passwordText.setText(" ");
-        pass_field.setText(adminService.generatePassword());
+
+        passString = adminService.generatePassword();
+        pass_field.setText(passString);
+        clipboard.setContents(new StringSelection(passString), null);
+
     }
 
 
@@ -79,5 +91,13 @@ public class AdminController {
         }
 
         return n>0 && n<50;
+    }
+
+    private static Clipboard getSystemClipboard()
+    {
+        Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
+        Clipboard systemClipboard = defaultToolkit.getSystemClipboard();
+
+        return systemClipboard;
     }
 }

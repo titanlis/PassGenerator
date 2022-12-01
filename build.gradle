@@ -3,10 +3,21 @@ plugins {
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'org.beryx.jlink' version '2.25.0'
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group 'ru.itm'
 version '1.0-SNAPSHOT'
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'ru.itm.pass.PasswordApplication'
+        )
+    }
+}
+
+
 
 repositories {
     mavenCentral()
@@ -25,7 +36,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'ru.itm.pass'
-    mainClass = 'ru.itm.pass.PasswordApplication'
+    mainClass = 'ru.itm.pass.MyLauncher'
 }
 
 javafx {
@@ -61,3 +72,5 @@ jlink {
 jlinkZip {
     group = 'distribution'
 }
+
+

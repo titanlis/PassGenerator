@@ -11,7 +11,7 @@ public class PasswordApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PasswordApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 280);
         stage.setTitle("Password Generator!");
         stage.setScene(scene);
         stage.show();
